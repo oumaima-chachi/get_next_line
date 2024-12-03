@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:02:13 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/02 10:51:21 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/02 14:21:30 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,22 @@ static char	*read_fd(int fd, char *save_data)
 	char	*tmp;
 
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
+	if (!buffer || BUFFER_SIZE <= 0)
 		return (NULL);
 	read_byte = 1;
-	while (read_byte > 0)
+	while (read_byte > 0 && !ft_strchr(save_data, '\n'))
 	{
 		read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (read_byte == -1)
-		{
-			free(buffer);
-			return (NULL);
-		}
+			return (free(buffer), NULL);
 		buffer[read_byte] = '\0';
 		if (!save_data)
 			save_data = ft_strdup("");
 		if (!save_data)
-		{
-			free(buffer);
-			return (NULL);
-		}
+			return (free(buffer), NULL);
 		tmp = ft_strjoin(save_data, buffer);
 		free(save_data);
 		save_data = tmp;
-		if (ft_strchr(buffer, '\n'))
-			break ;
 	}
 	free(buffer);
 	return (save_data);
@@ -70,10 +62,7 @@ static char	*get_line(char *saved_data)
 		i++;
 	}
 	if (saved_data[i] == '\n')
-	{
-		line[i] = saved_data[i];
-		i++;
-	}
+		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
@@ -96,10 +85,7 @@ static char	*save_r(char *saved_data)
 	}
 	rmng = malloc(sizeof(char) * (ft_strlen(saved_data) - i + 1));
 	if (!rmng)
-	{
-		free(saved_data);
-		return (NULL);
-	}
+		return (free(saved_data), NULL);
 	j = 0;
 	while (saved_data[i])
 		rmng[j++] = saved_data[i++];

@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:01:53 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/02 10:42:54 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/02 14:22:55 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
+
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	int		len;
