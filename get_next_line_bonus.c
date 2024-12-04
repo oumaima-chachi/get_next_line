@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 15:02:13 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/04 11:50:05 by ochachi          ###   ########.fr       */
+/*   Created: 2024/12/03 11:23:14 by ochachi           #+#    #+#             */
+/*   Updated: 2024/12/04 11:13:25 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*read_fd(int fd, char *save_data)
 {
 	char	*buffer;
-	ssize_t	read_byte;
+	int		read_byte;
 	char	*tmp;
 
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -96,15 +96,17 @@ static char	*save_r(char *saved_data)
 
 char	*get_next_line(int fd)
 {
-	static char	*stored_data;
-	char		*line;
+	static char *stored_data[FOPEN_MAX];
+	// Tbedlat hna: array 3iwad variable wa7da
+	char *line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
+		// zedna check 3la FOPEN_MAX
 		return (NULL);
-	stored_data = read_fd(fd, stored_data);
-	if (!stored_data)
+	stored_data[fd] = read_fd(fd, stored_data[fd]); // kandiro stored_data[fd]
+	if (!stored_data[fd])
 		return (NULL);
-	line = get_line(stored_data);
-	stored_data = save_r(stored_data);
+	line = get_line(stored_data[fd]);
+	stored_data[fd] = save_r(stored_data[fd]); // w hna stored_data[fd]
 	return (line);
 }
