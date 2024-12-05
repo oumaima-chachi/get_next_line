@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:02:13 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/04 11:50:05 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/05 20:30:59 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,3 +108,26 @@ char	*get_next_line(int fd)
 	stored_data = save_r(stored_data);
 	return (line);
 }
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int fd = open("test.txt", O_RDONLY); // Ouvre un fichier prédéfini
+//     char *line;
+
+//     if (fd < 0) // Vérifie si l'ouverture a échoué
+//     {
+//         printf("Erreur: Impossible d'ouvrir le fichier.\n");
+//         return (1);
+//     }
+
+//     while ((line = get_next_line(fd)) != NULL) // Lit chaque ligne
+//     {
+//         printf("%s", line); // Affiche la ligne
+//         free(line);         // Libère la mémoire allouée pour cette ligne
+//     }
+
+//     close(fd); // Ferme le fichier
+//     return (0); // Fin du programme
+// }

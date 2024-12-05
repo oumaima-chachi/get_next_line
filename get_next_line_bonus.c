@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:23:14 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/04 11:13:25 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/05 11:04:04 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,17 @@ static char	*save_r(char *saved_data)
 
 char	*get_next_line(int fd)
 {
-	static char *stored_data[FOPEN_MAX];
-	// Tbedlat hna: array 3iwad variable wa7da
-	char *line;
+	static char	*stored_data[FOPEN_MAX];
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
-		// zedna check 3la FOPEN_MAX
 		return (NULL);
-	stored_data[fd] = read_fd(fd, stored_data[fd]); // kandiro stored_data[fd]
+	stored_data[fd] = read_fd(fd, stored_data[fd]);
 	if (!stored_data[fd])
+	{
 		return (NULL);
+	}
 	line = get_line(stored_data[fd]);
-	stored_data[fd] = save_r(stored_data[fd]); // w hna stored_data[fd]
+	stored_data[fd] = save_r(stored_data[fd]);
 	return (line);
 }

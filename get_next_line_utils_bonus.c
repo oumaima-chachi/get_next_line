@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:52:42 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/04 11:53:03 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/05 09:28:40 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ char	*ft_strchr(const char *s, int c)
 
 char	*ft_strdup(const char *s)
 {
-	char *dup;
-	size_t i;
+	char	*dup;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
