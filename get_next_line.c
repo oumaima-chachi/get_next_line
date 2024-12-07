@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:02:13 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/05 20:30:59 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/08 00:09:43 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*read_fd(int fd, char *save_data)
 	{
 		read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (read_byte == -1)
-			return (free(buffer), NULL);
+			return (free(save_data),free(buffer), NULL);
 		buffer[read_byte] = '\0';
 		if (!save_data)
 			save_data = ft_strdup("");
@@ -130,4 +130,23 @@ char	*get_next_line(int fd)
 
 //     close(fd); // Ferme le fichier
 //     return (0); // Fin du programme
+// }
+
+
+// #include <stdio.h>
+// int main(void)
+// {
+//     int fd;
+//     char *result;
+
+//     fd = open("example.txt", O_RDONLY);
+//     if (fd < 0)
+//         return (1);
+
+//     result = read_fd(fd, NULL);
+//     printf("%s\n", result);
+//     free(result);
+
+//     close(fd);
+//     return (0);
 // }

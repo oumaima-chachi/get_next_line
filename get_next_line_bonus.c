@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:23:14 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/05 11:04:04 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/08 00:16:14 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*read_fd(int fd, char *save_data)
 	{
 		read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (read_byte == -1)
-			return (free(buffer), NULL);
+			return (free(save_data),free(buffer), NULL);
 		buffer[read_byte] = '\0';
 		if (!save_data)
 			save_data = ft_strdup("");
