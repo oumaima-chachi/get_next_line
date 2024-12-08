@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:23:14 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/08 00:16:14 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/08 12:03:51 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*read_fd(int fd, char *save_data)
 	{
 		read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (read_byte == -1)
-			return (free(save_data),free(buffer), NULL);
+			return (free(save_data), free(buffer), NULL);
 		buffer[read_byte] = '\0';
 		if (!save_data)
 			save_data = ft_strdup("");
@@ -110,3 +110,29 @@ char	*get_next_line(int fd)
 	stored_data[fd] = save_r(stored_data[fd]);
 	return (line);
 }
+// int main()
+// {
+// 	int fd1;
+// 	int fd2;
+// 	char *line;
+// 	fd1 = open("test.txt1",O_RDONLY);
+// 	fd2 = open("test.txt2",O_RDONLY);
+// 	if (fd1 < 0 || fd2 < 0 )
+// 	{
+// 		printf("erreur");
+// 		return (1);
+// 	}
+//  while ((line = get_next_line(fd1)) != NULL)
+//     {
+//         printf("%s\n", line);
+//         free(line);
+//     }
+//     while ((line = get_next_line(fd2)) != NULL)
+//     {
+//         printf("%s\n", line);
+//         free(line);
+//     }
+// 	close (fd1);
+// 	close (fd2);
+// 	return (0);
+// }

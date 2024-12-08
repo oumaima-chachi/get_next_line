@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 15:02:13 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/08 00:09:43 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/08 17:30:58 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*read_fd(int fd, char *save_data)
 	{
 		read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (read_byte == -1)
-			return (free(save_data),free(buffer), NULL);
+			return (free(save_data), free(buffer), NULL);
 		buffer[read_byte] = '\0';
 		if (!save_data)
 			save_data = ft_strdup("");
@@ -108,45 +108,68 @@ char	*get_next_line(int fd)
 	stored_data = save_r(stored_data);
 	return (line);
 }
-
-// #include <stdio.h>
-
+// int main()
+// {
+// 	int fd;
+// 	char *line = NULL;
+// 	fd = open("test.txt",O_RDONLY);
+// 	if (fd < 0)
+// 	{
+// 		perror("erreur");
+// 		return (1);
+// 	}
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close (fd);
+// 	return (0);
+// }
 // int main(void)
 // {
-//     int fd = open("test.txt", O_RDONLY); // Ouvre un fichier prédéfini
-//     char *line;
+// 	char *saved_data = strdup("Bonjour\nDeuxième ligne");
+// 	char *remaining_data = save_r(saved_data);
 
-//     if (fd < 0) // Vérifie si l'ouverture a échoué
-//     {
-//         printf("Erreur: Impossible d'ouvrir le fichier.\n");
-//         return (1);
-//     }
+// 	printf("%s\n", remaining_data);
 
-//     while ((line = get_next_line(fd)) != NULL) // Lit chaque ligne
-//     {
-//         printf("%s", line); // Affiche la ligne
-//         free(line);         // Libère la mémoire allouée pour cette ligne
-//     }
-
-//     close(fd); // Ferme le fichier
-//     return (0); // Fin du programme
+// 	free(remaining_data);
+// 	return 0;
 // }
 
+// char	*get_line(char *saved_data);
 
-// #include <stdio.h>
 // int main(void)
 // {
-//     int fd;
-//     char *result;
+// 	char saved_data[] = "Bonjour le monde\nDeuxième ligne\nTroisième ligne";
+// 	char *line;
 
-//     fd = open("example.txt", O_RDONLY);
-//     if (fd < 0)
-//         return (1);
+// 	line = get_line(saved_data);
+// 	printf("%s\n", line);
 
-//     result = read_fd(fd, NULL);
-//     printf("%s\n", result);
-//     free(result);
-
-//     close(fd);
-//     return (0);
+// 	free(line); 
+// 	return 0;
+// }
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*result;
+// 	fd = open("test.txt", O_RDONLY);
+// 	if (fd < 0)
+// 	{
+// 		perror("Erreur lors de l'ouverture du fichier");
+// 		return (1);
+// 	}
+// 	result = read_fd(fd, NULL);
+// 	if (result)
+// 	{
+// 		printf("Contenu lu :\n%s\n", result);
+// 		free(result);
+// 	}
+// 	else
+// 	{
+// 		printf("Aucun contenu lu ou erreur lors de la lecture.\n");
+// 	}
+// 	close(fd);
+// 	return (0);
 // }

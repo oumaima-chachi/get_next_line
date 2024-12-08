@@ -6,7 +6,7 @@
 /*   By: ochachi <ochachi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 11:52:42 by ochachi           #+#    #+#             */
-/*   Updated: 2024/12/05 09:28:40 by ochachi          ###   ########.fr       */
+/*   Updated: 2024/12/08 12:18:33 by ochachi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,3 +90,29 @@ char	*ft_strdup(const char *s)
 	dup[i] = '\0';
 	return (dup);
 }
+// int main()
+// {
+// 	char *c = "oumaima";
+// 	printf("%d",ft_strlen(c));
+// }
+// int main()
+// {
+// 	char s1[] = "ouma";
+// 	char s2[] = ",zwina";
+// 	printf("%s\n",ft_strjoin(s1,s2));
+// }
+// int	main()
+// {
+// 	const char	*o = "oumaima, zwina!";
+// 	char		*d;
+// 	d = ft_strdup(o);
+// 	printf("original: %s\n", o);
+// 	printf("duplicate: %s\n", d);
+// }
+// int	main()
+// {
+// 	char	dd[] = "oumaima";
+// 	char	*result;
+// 	result = ft_strchr(dd,'i');
+// 	printf("%s",result);
+// }
